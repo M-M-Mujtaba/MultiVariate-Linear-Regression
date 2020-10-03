@@ -107,7 +107,7 @@ plt.show()
 
 #Part-II with multiple variables
 #importing Data
-
+print('Part2')
 data2 = pd.read_csv('ex1data2.txt', names=['Size', 'Bedrooms', 'Price'])
 
 x= data2.drop(['Price'],axis=1)
@@ -143,6 +143,34 @@ plt.xlabel('Number of Iterations')
 plt.title('Minimizing Cost Using Gradient Descent')
 plt.show()
 
+
+theta_1, J_history_1 = gradientDescentMulti(X, y, theta, 0.3, 50)
+theta_2, J_history_2 = gradientDescentMulti(X, y, theta, 0.1, 50)
+theta_3, J_history_3 = gradientDescentMulti(X, y, theta, 0.03, 50)
+theta_4, J_history_4 = gradientDescentMulti(X, y, theta, 0.01, 50)
+theta_5, J_history_5 = gradientDescentMulti(X, y, theta, 0.003, 50)
+theta_6, J_history_6 = gradientDescentMulti(X, y, theta, 0.001, 50)
+
+plt.plot(J_history_1, label='0.3')
+plt.plot(J_history_2, label='0.1')
+plt.plot(J_history_3, label='0.03')
+plt.plot(J_history_4, label='0.01')
+plt.plot(J_history_5, label='0.003')
+plt.plot(J_history_6, label='0.001')
+plt.title('Testing Different Learning Rates')
+plt.xlabel('Number of Iterations')
+plt.ylabel('Cost J')
+plt.show()
+
+theta, J_history = gradientDescentMulti(X, y, theta, 0.3, 1500)
+print(theta)
+X = np.array([1650, 3])
+X = (X - mean)/std
+X = np.append(1, X)
+X = np.reshape(X, (1,3))
+print(X)
+pred = prediction(X, theta)
+print(pred)
 
 #Part 3
 print('Part 3')
