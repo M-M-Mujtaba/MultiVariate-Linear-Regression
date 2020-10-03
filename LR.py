@@ -9,6 +9,7 @@ lables = []
 features = []
 
 
+
 def data_read(name):
     global lables
     global features
